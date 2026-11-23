@@ -784,6 +784,7 @@ function renderDistrict(d){
   const img = node.querySelector('.d-photo');
   img.addEventListener('load', () => img.classList.add('loaded'));
   img.addEventListener('error', () => img.remove());
+  if(img.complete){ img.naturalWidth ? img.classList.add('loaded') : img.remove(); }
 
   node.querySelector('[data-back]').addEventListener('click', () => go(urban ? '#/urban' : '#/'));
   node.querySelectorAll('.cat-row').forEach(btn => {
@@ -985,6 +986,7 @@ function renderPlace(d, key, idx){
   if(pimg){
     pimg.addEventListener('load', () => pimg.classList.add('loaded'));
     pimg.addEventListener('error', () => pimg.remove());
+    if(pimg.complete){ pimg.naturalWidth ? pimg.classList.add('loaded') : pimg.remove(); }
   }
   node.querySelector('[data-close]').addEventListener('click', () => go(`#/d/${d.id}/${key}`));
   node.querySelector('[data-nav="cat"]').addEventListener('click', () => go(`#/d/${d.id}/${key}`));
